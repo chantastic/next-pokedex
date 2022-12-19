@@ -16,7 +16,7 @@ export default async function PokemonLayout({ children }) {
         <ul>
           {data.results.map((pokemon) => (
             <li key={pokemon.name}>
-              <Link href={`/${pokemon.name}`}>
+              <Link href={`/pokemon/${pokemon.name}`}>
                 {pokemon.name}
               </Link>
             </li>
