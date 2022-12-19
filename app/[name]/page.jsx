@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 async function fetchPokemonByName(name) {
   let res = await fetch(
     `https://pokeapi.co/api/v2/pokemon/${name}`
@@ -12,6 +14,10 @@ export default async function Home({ params }) {
   return (
     <main>
       <h1>{pokemon.name}</h1>
+      <img
+        src={pokemon.sprites.front_default}
+        alt={`${pokemon.name} front`}
+      />
     </main>
   );
 }
