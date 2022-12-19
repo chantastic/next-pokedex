@@ -14,9 +14,11 @@ export default async function Home({ params }) {
   return (
     <main>
       <h1>{pokemon.name}</h1>
-      <img
+      <Image
         src={pokemon.sprites.front_default}
         alt={`${pokemon.name} front`}
+        width="96"
+        height="96"
       />
     </main>
   );
