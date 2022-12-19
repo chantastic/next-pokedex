@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default async function PokemonLayout({ children }) {
   let res = await fetch(`https://pokeapi.co/api/v2/pokemon/`);
   let data = await res.json();
@@ -14,7 +16,9 @@ export default async function PokemonLayout({ children }) {
         <ul>
           {data.results.map((pokemon) => (
             <li key={pokemon.name}>
-              <a href={`/${pokemon.name}`}>{pokemon.name}</a>
+              <Link href={`/${pokemon.name}`}>
+                {pokemon.name}
+              </Link>
             </li>
           ))}
         </ul>
