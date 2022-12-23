@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function PokemonList() {
+export default function Pokemon() {
   redirect("/pokemon/bulbasaur");
 }
