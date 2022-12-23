@@ -1,15 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-async function fetchPokemon({ id = "", params = {} }) {
-  let searchParams = new URLSearchParams(params).toString();
-  let endpoint = new URL(
-    `https://pokeapi.co/api/v2/pokemon/${id}?${searchParams}`
-  ).toString();
-
-  let res = await fetch(endpoint);
-  return await res.json();
-}
+import { fetchPokemon, getPokemonUrl } from "./pokemon";
 
 export default async function Home({ params, searchParams }) {
   let pokemon = await fetchPokemon({ id: params.name });
@@ -59,16 +50,4 @@ export default async function Home({ params, searchParams }) {
       </main>
     </>
   );
-}
-
-function getPokemonUrl(pokemonName = "bulbasaur", params = {}) {
-  let path = `/pokemon/${pokemonName}`;
-  let listSearchParams = "";
-  if (params.limit) {
-    listSearchParams = new URLSearchParams([
-      ["limit", params.limit],
-    ]).toString();
-  }
-
-  return `${path}?${listSearchParams}`;
 }
