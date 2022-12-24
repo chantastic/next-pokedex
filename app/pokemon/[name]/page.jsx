@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { fetchPokemon, getPokemonUrl } from "./pokemon";
+import styles from "./pokemon.module.css";
 
 export default async function Home({ params, searchParams }) {
   let pokemon = await fetchPokemon({ id: params.name });
@@ -32,21 +33,37 @@ export default async function Home({ params, searchParams }) {
       </aside>
 
       <main>
-        <div
-          style={{
-            position: "-webkit-sticky",
-            position: "sticky",
-            top: 0,
-          }}
-        >
-          <h1>{pokemon.name}</h1>
+        <section className={styles.header}>
           <Image
             src={pokemon.sprites.front_default}
             alt={`${pokemon.name} front`}
             width="96"
             height="96"
           />
-        </div>
+          <div>
+            <h1 className={styles.headerName}>
+              {pokemon.name}
+            </h1>
+
+            <div className={styles.headerTypeContainer}>
+              <h4>type:</h4>
+              <ul style={{ padding: 0 }}>
+                {pokemon.types.map(({ type }) => {
+                  let typeSelector = `typeBadge--${type.name}`;
+
+                  return (
+                    <span
+                      key={type.name}
+                      className={`${styles.typeBadge} ${styles[typeSelector]}`}
+                    >
+                      {type.name}
+                    </span>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        </section>
       </main>
     </>
   );

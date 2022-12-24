@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.headerName {
+  font-size: 2.25em;
+  text-transform: capitalize;
+}
+
+.headerTypeContainer {
+  align-items: center;
+  display: flex;
+  gap: .5em;
+}
+
+.typeBadge {
+  background-color: gray;
+  display: inline-flex;
+  margin-right: 0.25em;
+  border-radius: 0.25em;
+  padding: 0.5em 1em;
+  color: white;
+}
+
+.typeBadge--poison {
+  background-color: RebeccaPurple;
+}
+
+.typeBadge--grass {
+  background-color: MediumSeaGreen;
+}
+
+.typeBadge--water {
+  background-color: DodgerBlue;
+}
+
+.typeBadge--fire {
+  background-color: tomato;
+}
